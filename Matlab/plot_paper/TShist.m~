@@ -1,0 +1,44 @@
+M=10.^(12:15);
+tslum=[-2,31.5,17.5,2.1];%ts of lum as binned by lum
+tsdyn=[0.23,25.5,11.7,-8.3];%ts of dyn as binned by dyn
+myfigure;
+h=bar([tsdyn;tslum]');
+set(get(h(1),'BaseLine'),'LineWidth',1,'LineStyle','-');
+set(gca,'xtick',(1:numel(M))-0.5);
+set(gca,'xticklabel',mat2cell(num2str(log10(M)')));
+set(gca,'xminortick','off')
+% set(gca,'xscale','log');
+legend('DynMass','LumMass');
+xlabel('$log(M[M_\odot/h])$');
+ylabel('TS');
+print('-depsc','/work/Projects/Lensing/outputv4/paper/TShist.eps');
+%%
+N=[2,2,5,10,20];
+tsdyn=[-72.0,-18.9,10.2,23.3,13.0];
+tslum=[-5.0,4.6,12.1,18.6,11.6];
+myfigure;
+h=bar([tsdyn;tslum]');
+set(get(h(1),'BaseLine'),'LineWidth',1,'LineStyle','-');
+set(gca,'xtick',(2:numel(N))-0.5);
+set(gca,'xticklabel',mat2cell(num2str(N(2:end)')));
+set(gca,'xminortick','off')
+xlabel('Multiplicity');
+ylabel('TS');
+legend('DynMass','LumMass');
+% ylim([-20,40])
+print('-depsc','/work/Projects/Lensing/outputv4/paper/TShistN.eps');
+%%
+z=[0,0.1,0.2,0.3];
+tsdyn=[4.1,31.04,-1.6,-5.0];
+tslum=[4.3,32.7,11.0,0.51];
+myfigure;
+h=bar([tsdyn;tslum]');
+set(get(h(1),'BaseLine'),'LineWidth',1,'LineStyle','-');
+set(gca,'xtick',(2:numel(N))-0.5);
+set(gca,'xticklabel',mat2cell(num2str(N')));
+set(gca,'xminortick','off')
+xlabel('Multiplicity');
+ylabel('TS');
+legend('DynMass','LumMass');
+% ylim([-20,40])
+print('-depsc','/work/Projects/Lensing/outputv4/paper/TShistZ.eps');

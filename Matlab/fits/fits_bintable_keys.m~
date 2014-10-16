@@ -1,0 +1,26 @@
+function [header,fileinfo]=fits_bintable_keys(file,index)
+% function [header,fileinfo]=fits_bintable_keys(file,index)
+%
+% collect column names from binary table of a fits files
+% can return fitsinfo as well
+% 
+% file: fits filename
+% index: bintable index, in case there are more tha
+% ==Jiaxin Han, 11/02/2010, Durham ==
+
+
+a=fitsinfo(file);
+Keys=a.BinaryTable.Keywords;
+header=cell(1,a.BinaryTable.NFields);
+j=0;
+for i=1:size(Keys,1)
+    if strncmp(Keys{i,1},'TTYPE',5)
+        j=j+1;
+        header{j}=Keys{i,2};
+    end
+end
+if j~=a.BinaryTable.NFields
+    error(['number of Keywords less than number of fields for file:',sprintf('\n'),...
+        file,sprintf('\n'),num2str(j),',',num2str(a.BinaryTable.NFields)]);
+end
+fileinfo=a;

@@ -1,0 +1,16 @@
+function data=load_shearprof(file)
+
+data=struct('s',{},'w',{},'es',{},'r',{},'r2',{},'n',{},'nstack',{});
+fid=fopen(file);
+for i=1:4
+    for j=1:2
+        data(i,j).s=fread(fid,60,'float32');
+        data(i,j).w=fread(fid,60,'float32');
+        data(i,j).es=fread(fid,60,'float32');
+        data(i,j).r=fread(fid,60,'float32');
+        data(i,j).r2=fread(fid,60,'float32');
+        data(i,j).n=fread(fid,60,'int32');
+        data(i,j).nstack=fread(fid,1,'int32');
+    end
+end
+fclose(fid);

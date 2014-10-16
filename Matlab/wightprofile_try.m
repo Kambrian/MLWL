@@ -1,0 +1,19 @@
+GAMA_WL_init;
+z=[e{1}(:,6);e{2}(:,6);e{3}(:,6)];
+catall=structcat([cat{1},cat{2},cat{3}]);
+z1=mean(catall.MedianZ(catall.mid==4&catall.zid==1));
+z2=mean(catall.MedianZ(catall.mid==4&catall.zid==2));      
+%%
+[xm,ym,dyx]=linhist(z,30);
+figure;plot(xm,dyx/sum(ym),'--.');
+xlim([0,1]);
+ax1=gca;
+dz=0:0.02:1;
+ax2 = axes('Position',get(ax1,'Position'),...
+           'XAxisLocation','top',...
+           'YAxisLocation','right',...
+           'Color','none',...
+           'XColor','k','YColor','k');
+line(z1+dz,sigma_crit(0.3,0.7,z1,z1+dz).^-2,'color','r','parent',ax2);       
+line(z2+dz,sigma_crit(0.3,0.7,z2,z2+dz).^-2,'color','g','parent',ax2);       
+xlim([0,1]);

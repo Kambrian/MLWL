@@ -1,0 +1,25 @@
+%surface mass overdensity of an embedded iso-thermal sphere
+f=@(x) 2./x.*atan(sqrt(1./x.^2-1))-2*sqrt(1-x.^2);
+
+%average surface overdensity inside radius x
+%int(f(x).*x,x,0,x)./x.^2*2;
+g=@(x) 2*(2*(x.*atan((1 - x.^2).^(1/2)./x) - (1 - x.^2).^(1/2) + (1 - x.^2).^(3/2)/3 + 2/3))./x.^2;
+
+figure;
+x=logspace(-3,0,20);
+loglog(x,f(x),'.-')  
+hold on;
+plot(x,pi*x.^-1,'o--')
+legend('embedded isothermal','superimposed isothermal');
+plot(x,ff(x),'r.');
+
+
+figure;loglog(x,f(x),'.-',x,g(x),'*:');
+figure;semilogx(x,1-f(x)./g(x),'.-')
+
+%%
+
+% x=logspace(-3,0,20);
+x=1:8;
+y=x./(1+x);
+figure;plot(x,sqrt((1+y.^2)./(1-y.^2)),'.-');

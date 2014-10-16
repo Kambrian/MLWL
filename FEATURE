@@ -1,0 +1,24 @@
+VER 2.0
+
+Integrated random catalogue reduction；various kinds of random catalogues
+produce ready-to-plot data
+Mass and Redshift binning defined in parameter file
+each run produce a single bin result
+----------------------------
+VER 3.0
+
+G3Cv4 input catalogue
+----------------------------
+VER 4.0 (2012/12/13)
+
+HDF5 output
+shear prediction
+
+--------------------------
+VER 5.0 (17/04/2013)
+
+ML lensing
+
+VER 7.0: GAMA-II
+
+VER 8.0: retreat to GAMA-I 
